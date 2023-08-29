@@ -1,4 +1,6 @@
 import { FaHome } from 'react-icons/fa';
+import { FaSearch } from 'react-icons/fa';
+import Search from './Search';
 
 function Header() {
     return (
@@ -8,7 +10,7 @@ function Header() {
                 <h1>TodoList</h1>
             </div>
             <div className='header__search'>
-                <input />
+                <Search />
             </div>
         </header>);
 }
