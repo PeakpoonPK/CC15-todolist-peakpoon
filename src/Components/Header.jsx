@@ -1,6 +1,7 @@
 import { FaHome } from 'react-icons/fa';
 import { FaSearch } from 'react-icons/fa';
-import Search from './Search';
+import Search from './Search.jsx';
+import "./Header.scss";
 
 function Header() {
     return (

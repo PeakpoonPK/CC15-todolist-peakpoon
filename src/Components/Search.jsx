@@ -1,5 +1,5 @@
 import { FaSearch } from 'react-icons/fa';
-import "./Header.scss"
+import "./Search.scss"
 
 function Search() {
     return <div className='search'>
