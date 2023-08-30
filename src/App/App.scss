@@ -53,10 +53,7 @@ li {
     list-style: none;
 }
 
-.list {
-    display: flex;
-    flex-direction: column;
-
+.accordion {
     &__item {
         display: flex;
         gap: 15px;
@@ -65,13 +62,21 @@ li {
         cursor: pointer;
         border-radius: 4px;
         align-items: baseline;
+        font-weight: 900;
 
-        &:hover {
-            background-color: $grey-light;
+        &__icon {
+            cursor: pointer;
+            transition: 1s;
         }
 
-        &__text {
-            font-weight: 500;
+        &__active {
+            transform: rotate(-90deg);
         }
+    }
+
+
+
+    &__text {
+        font-weight: inherit;
     }
 }
