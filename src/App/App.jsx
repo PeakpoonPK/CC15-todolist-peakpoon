@@ -2,8 +2,11 @@ import './App.scss';
 import { FaHome } from 'react-icons/fa';
 import Header from '../Components/Header.jsx';
 import { FaInbox, FaCalendar, FaCalendarAlt, FaChevronDown } from 'react-icons/fa';
-import ListItem from '../Components/ListItem.jsx';
+// import ListItem from '../Components/ListItem.jsx';
 import List from '../Components/List.jsx';
+import TodoHeader from '../Components/Todo/TodoHeader.jsx';
+import TodoCreate from '../Components/Todo/TodoCreate.jsx';
+import TodoList from '../Components/Todo/TodoList';
 
 function App() {
 
@@ -60,7 +63,13 @@ function App() {
           </section>
         </aside>
       </div>
-      <div className="todo__content">TodoContent</div>
+      <div className="todo__content">
+        <main className="todo__container">
+          <TodoHeader />
+          <TodoCreate />
+          <TodoList />
+        </main>
+      </div>
     </div>
   );
 }

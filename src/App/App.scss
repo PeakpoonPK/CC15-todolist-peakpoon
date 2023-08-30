@@ -74,9 +74,14 @@ li {
         }
     }
 
-
-
     &__text {
         font-weight: inherit;
     }
+}
+
+.todo__container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 20px;
 }
