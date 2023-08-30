@@ -2,6 +2,7 @@ $header-height: 60px;
 $sidebar-width: 300px;
 @import "../index.scss";
 
+
 .todo {
     display: grid;
     grid-template-rows: $header-height calc(100vh - $header-height);
@@ -37,5 +38,40 @@ $sidebar-width: 300px;
         // grid-column-end: -1;
 
         // background-color: blue;
+    }
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px 30px;
+    height: calc(100vh - $header-height);
+}
+
+li {
+    list-style: none;
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+
+    &__item {
+        display: flex;
+        gap: 15px;
+        font-size: 2rem;
+        padding: 10px;
+        cursor: pointer;
+        border-radius: 4px;
+        align-items: baseline;
+
+        &:hover {
+            background-color: $grey-light;
+        }
+
+        &__text {
+            font-weight: 500;
+        }
     }
 }
