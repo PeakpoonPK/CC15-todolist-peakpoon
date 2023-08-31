@@ -17,11 +17,9 @@ function TodoLists() {
 
   return (
     <ul className={styles.todo__lists}>
-      <TodoItem />
-      <TodoItem />
-      <TodoItem />
-      <TodoItem />
-      <TodoItem />
+      <TodoItem task="DoHW" done={false} date="31 Aug" />
+      <TodoItem task="Dink" done={true} date="1 Sep" />
+
     </ul >
   );
 }
