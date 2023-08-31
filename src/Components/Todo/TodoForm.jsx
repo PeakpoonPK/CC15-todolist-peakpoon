@@ -24,18 +24,35 @@ props ={
 function TodoForm(props) {
   const [isError, setIsError] = useState(true);
   const [taskInput, setTaskInput] = useState('');
+
   const handleChangeInput = function (event) {
-    console.log('user typing...', event.target.value)
+    // console.log('user typing...', event.target.value)
+    if (isError) setIsError(false);
     setTaskInput(event.target.value)
       ;
   };
 
   const handleSubmit = function (event) {
+    // 1. PreventDefault
     event.preventDefault();
 
-    /* case1 : submit 
+    /*
+ 
+    2. known User type (in state: taskInput)
+
+    3.FormValidation 
+    case1 : submit 
     case2 : no submit => show Error
     */
+
+    if (taskInput.trim() === '') {
+      console.log('Error');
+      setIsError(true);
+      return;
+      // } else {
+      //   console.log('Success');
+      // }
+    }
     console.log('submit');
     setIsError(!isError);
 
@@ -43,9 +60,9 @@ function TodoForm(props) {
 
   const handleCancele = function () {
     console.log('cancele');
-    props.setIsOpenForm(false)
-
+    props.setIsOpenForm(false);
   };
+
   return (
 
     <form onSubmit={handleSubmit}
