@@ -3,6 +3,7 @@ import TodoForm from "./TodoForm.jsx"
 import { FaPlus } from 'react-icons/fa';
 import { HiPlus } from 'react-icons/hi';
 import styles from './TodoCreate.module.scss';
+import TodoLists from './TodoLists.jsx';
 
 /*
 CC-1 Condition Rendering
@@ -42,12 +43,10 @@ function TodoCreate() {
   const [isOpenForm, setIsOpenForm] = useState(false)
   console.log('render', 'rerender');
   let active = true;
-  //#2 : JS Function (logic)
   const handleClick = function (event) {
     console.log('clicked');
     setIsOpenForm(!isOpenForm);
-    // active = !active;
-    // console.log('clicked', active)
+
   };
 
 
