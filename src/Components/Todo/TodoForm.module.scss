@@ -24,8 +24,8 @@
 
 .todo__form__footer {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: flex-end;
+
 }
 
 .todo__error {
@@ -34,12 +34,14 @@
   font-size: $text-base;
   font-weight: 600;
   color: $primary;
+  flex: 1;
 }
 
 .todo__form__buttons {
   display: flex;
   justify-content: flex-end;
   gap: 10px;
+
   // flex: 1;
 
   &>button {
