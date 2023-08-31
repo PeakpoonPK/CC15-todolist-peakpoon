@@ -8,14 +8,13 @@ import { useState } from 'react';
 
 function TodoLists() {
   const [isOpenForm, setIsOpenForm] = useState(false);
-
   const handleClick = function (event) {
     console.log('clicked');
     setIsOpenForm(!isOpenForm);
   };
 
   return (
-    <ul className={styles.todo__lists}>{isOpenForm ? (<TodoForm />) :
+    <ul className={styles.todo__lists}>{isOpenForm ? (<TodoForm textSubmit='Edit Task' />) :
 
       (<li className={styles.todo}>
 
