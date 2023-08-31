@@ -31,7 +31,8 @@ CC5 - React State (1 in Function React Hook group)
    const [state,setState] =] useState(intialState:any)
     element 1 ; current State
     element 2 ; Fn for SettState
-  
+    when state is changed, Function component will new render
+    render == all code in Function will run agian 1 time   
 */
 
 // #1 : FC Function Component (Render)
@@ -39,7 +40,7 @@ CC5 - React State (1 in Function React Hook group)
 
 function TodoCreate() {
   const [isOpenForm, setIsOpenForm] = useState(false)
-  console.log(isOpenForm);
+  console.log('render', 'rerender');
   let active = true;
   //#2 : JS Function (logic)
   const handleClick = function (event) {
