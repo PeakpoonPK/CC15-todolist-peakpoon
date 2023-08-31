@@ -13,8 +13,9 @@ function TodoLists() {
     setIsOpenForm(!isOpenForm);
   };
 
+
   return (
-    <ul className={styles.todo__lists}>{isOpenForm ? (<TodoForm textSubmit='Edit Task' />) :
+    <ul className={styles.todo__lists}>{isOpenForm ? (<TodoForm textSubmit='Edit Task' setIsOpenForm={setIsOpenForm} />) :
 
       (<li className={styles.todo}>
 

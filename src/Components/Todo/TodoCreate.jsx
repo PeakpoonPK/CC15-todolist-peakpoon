@@ -42,12 +42,11 @@ CC5 - React State (1 in Function React Hook group)
 
 function TodoCreate() {
   const [isOpenForm, setIsOpenForm] = useState(false)
-  console.log('render', 'rerender');
+  // console.log('render', 'rerender');
   let active = true;
   const handleClick = function (event) {
-    console.log('clicked');
+    // console.log('clicked');
     setIsOpenForm(!isOpenForm);
-
   };
 
   return (
@@ -56,7 +55,8 @@ function TodoCreate() {
         <TodoForm
           textSubmit='Add Task'
           setIsOpenForm={setIsOpenForm}
-        />) : (<div className={styles.todo__create}
+        />) : (
+        <div className={styles.todo__create}
           onClick={handleClick}
         >
           <div className={styles.todo__create__button}>
