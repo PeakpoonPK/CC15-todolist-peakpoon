@@ -9,7 +9,7 @@ import { useState } from 'react';
 function TodoLists() {
   const [isOpenForm, setIsOpenForm] = useState(false);
   const handleClick = function (event) {
-    console.log('clicked');
+    // console.log('clicked');
     setIsOpenForm(!isOpenForm);
   };
 

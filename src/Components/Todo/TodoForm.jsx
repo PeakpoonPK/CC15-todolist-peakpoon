@@ -1,6 +1,7 @@
 import styles from './TodoForm.module.scss';
 import { Button } from '../Common/Button/Button'
 import { useState } from 'react';
+import { flushSync } from 'react-dom';
 /*
 props ={
   textSubmit : string
@@ -13,31 +14,49 @@ CC1 -From Handle
 - Sole: declare type of button
       <Button type='button'>1</Button>
           <Button type='Submit' >2</Button>
+
+props ={
+  textSubmit : string
+  setIsOpenForm: FN
+}
 */
 
 function TodoForm(props) {
   const [isError, setIsError] = useState(true);
+  const [taskInput, setTaskInput] = useState('');
+  const handleChangeInput = function (event) {
+    console.log('user typing...', event.target.value)
+    setTaskInput(event.target.value)
+      ;
+  };
 
   const handleSubmit = function (event) {
     event.preventDefault();
+
+    /* case1 : submit 
+    case2 : no submit => show Error
+    */
     console.log('submit');
     setIsError(!isError);
 
   };
 
-  const handleCancele = function (event) {
-    event.preventDefault();
+  const handleCancele = function () {
     console.log('cancele');
+    props.setIsOpenForm(false)
 
   };
   return (
 
     <form onSubmit={handleSubmit}
-      className={styles.todo__form__container}
-
-    >
+      className={styles.todo__form__container}>
       {/*	Body */}
-      <input className={styles.todo__form__input} placeholder='Task Name' />
+      <input
+        className={styles.todo__form__input}
+        placeholder='Task Name'
+        value={taskInput}
+        onChange={handleChangeInput}
+      />
 
       {/*Form Footer */}
       <div className={styles.todo__form__footer}>

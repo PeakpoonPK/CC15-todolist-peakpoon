@@ -34,6 +34,7 @@ CC5 - React State (1 in Function React Hook group)
     element 2 ; Fn for SettState
     when state is changed, Function component will new render
     render == all code in Function will run agian 1 time   
+
 */
 
 // #1 : FC Function Component (Render)
@@ -52,7 +53,10 @@ function TodoCreate() {
   return (
     <>
       {isOpenForm ? (
-        <TodoForm textSubmit='Add Task' />) : (<div className={styles.todo__create}
+        <TodoForm
+          textSubmit='Add Task'
+          setIsOpenForm={setIsOpenForm}
+        />) : (<div className={styles.todo__create}
           onClick={handleClick}
         >
           <div className={styles.todo__create__button}>
