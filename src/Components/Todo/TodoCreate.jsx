@@ -58,6 +58,7 @@ function TodoCreate(props) {
 
   const handleClick = function () {
     setIsOpenForm(!isOpenForm);
+
   };
 
   return (
@@ -66,8 +67,7 @@ function TodoCreate(props) {
         <TodoForm
           textSubmit='Add Task'
           setIsOpenForm={setIsOpenForm}
-          data={props.data}
-          setTodo={props.setTodo}
+          addTodo={props.addTodo}
         />
       ) : (
         <div className={styles.todo__create} onClick={handleClick}>

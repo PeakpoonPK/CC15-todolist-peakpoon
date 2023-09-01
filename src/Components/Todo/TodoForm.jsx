@@ -41,28 +41,29 @@ function TodoForm(props) {
       setIsError(true);
       return;
     }
-    console.log('submit === create new Todo');
-    // create NewTodo
-    // 1 - ส่ง Request ไปหลังบ้านเพื่อ save ลง Database
-    // 2 - ทำการอัพเดท State ของ AllTodo == React ทำการ Rerender
-    // data = []
-    // data = [{id:number,task:string,status:boolean,due_date:YYYY-MM-DD}]
-    // oldState = [{o},{o},{o}] === props.data
-    // newState = [{n},{o},{o},{o}]
+    // console.log('submit === create new Todo');
+    // // create NewTodo
+    // // 1 - ส่ง Request ไปหลังบ้านเพื่อ save ลง Database
+    // // 2 - ทำการอัพเดท State ของ AllTodo == React ทำการ Rerender
+    // // data = []
+    // // data = [{id:number,task:string,status:boolean,due_date:YYYY-MM-DD}]
+    // // oldState = [{o},{o},{o}] === props.data
+    // // newState = [{n},{o},{o},{o}]
 
-    //Start Logic : for CreateTodo
-    const newTodo = {
-      id: nanoid(),
-      task: taskInput,
-      status: false,
-      due_date: '2023-01-09',
-    };
-    // const newTodoLists = [newTodo, ...props.data];
-    //END Logic : For crateTodo
+    // //Start Logic : for CreateTodo
+    // const newTodo = {
+    //   id: nanoid(),
+    //   task: taskInput,
+    //   status: false,
+    //   due_date: '2023-01-09',
+    // };
+    // // const newTodoLists = [newTodo, ...props.data];
+    // //END Logic : For crateTodo
 
-    //Update State
-    props.setTodo(prev => [newTodo, ...prev]);
-
+    // //Update State
+    // props.setTodo(prev => [newTodo, ...prev]);
+    //send taskInPut to addTodo;
+    props.addTodo(taskInput);
     props.setIsOpenForm(false);
   };
 
