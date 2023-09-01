@@ -1,97 +1,91 @@
-import styles from './TodoForm.module.scss';
-import { Button } from '../Common/Button/Button'
 import { useState } from 'react';
-import { flushSync } from 'react-dom';
+import { nanoid } from 'nanoid';
+import { Button } from '../Common/Button/Button';
+import styles from './TodoForm.module.scss';
 /*
-props ={
-  textSubmit : string
-}
-
-CC1 -From Handle
-- FN contact Event is called "onSubmit"
-- FN was called by Browser (when?) by send parameter 1 option (event Object)
-- all Default  in <from> it do to submit
-- Sole: declare type of button
-      <Button type='button'>1</Button>
-          <Button type='Submit' >2</Button>
-
-props ={
-  textSubmit : string
-  setIsOpenForm: FN
-}
+  props = {
+    textSubmit : string
+  }
+*/
+/*
+CC1- Form Handle
+- ใช้ FN ไปผูกกับ Event ชื่อ onSubmit
+- FN จะถูก Browserเรียกใช้ (เมื่อไหร่ ?) โดยส่ง parameter มา 1 ตัว (event Object)
+- โดย default ทุกปุ่มใน <form> จะทำหน้าที่ submit
+- วิธีแก้ ต้องกำหนด type ของปุ่ม
+  - type="submit" :  <button type='button'>1</button>
+  - type="button" :  <button type='submit'>2</button>
 */
 
+/* 
+props = {
+  textSubmit : string
+  setIsOpenForm : FN
+}
+*/
 function TodoForm(props) {
-  const [isError, setIsError] = useState(true);
+  const [isError, setIsError] = useState(false);
   const [taskInput, setTaskInput] = useState('');
 
   const handleChangeInput = function (event) {
-    // console.log('user typing...', event.target.value)
     if (isError) setIsError(false);
-    setTaskInput(event.target.value)
-      ;
+    setTaskInput(event.target.value);
   };
 
   const handleSubmit = function (event) {
-    // 1. PreventDefault
     event.preventDefault();
 
-    /*
- 
-    2. known User type (in state: taskInput)
-
-    3.FormValidation 
-    case1 : submit 
-    case2 : no submit => show Error
-    */
-
+    // FormValidation
     if (taskInput.trim() === '') {
       console.log('Error');
       setIsError(true);
       return;
-      // } else {
-      //   console.log('Success');
-      // }
     }
-    console.log('submit');
-    setIsError(!isError);
+    console.log('submit === create new Todo');
+    // create NewTodo
+    // 1 - ส่ง Request ไปหลังบ้านเพื่อ save ลง Database
+    // 2 - ทำการอัพเดท State ของ AllTodo == React ทำการ Rerender
+    // data = []
+    // data = [{id:number,task:string,status:boolean,due_date:YYYY-MM-DD}]
+    // oldState = [{o},{o},{o}] === props.data
+    // newState = [{n},{o},{o},{o}]
 
-  };
+    //Start Logic : for CreateTodo
+    const newTodo = {
+      id: nanoid(),
+      task: taskInput,
+      status: false,
+      due_date: '2023-01-09',
+    };
+    // const newTodoLists = [newTodo, ...props.data];
+    //END Logic : For crateTodo
 
-  const handleCancele = function () {
-    console.log('cancele');
+    //Update State
+    props.setTodo(prev => [newTodo, ...prev]);
+
     props.setIsOpenForm(false);
   };
 
+  const handleCancel = function () {
+    props.setIsOpenForm(false);
+  };
   return (
-
-    <form onSubmit={handleSubmit}
-      className={styles.todo__form__container}>
-      {/*	Body */}
+    <form onSubmit={handleSubmit} className={styles.todo__form__container}>
       <input
         className={styles.todo__form__input}
         placeholder='Task Name'
         value={taskInput}
         onChange={handleChangeInput}
       />
-
       {/*Form Footer */}
       <div className={styles.todo__form__footer}>
-        {isError ? (<p className={styles.todo__error}>Title is required</p>) : null}
+        {isError ? <p className={styles.todo__error}>Title is required</p> : null}
         <div className={styles.todo__form__buttons}>
-          <Button
-            text='Cancel'
-            active={false}
-            type="button"
-            onClick={handleCancele} />
-          <Button
-            text={props.textSubmit}
-            active={true}
-            type='Submit' />
-          {/* <button type='button' onClick={handleCancel}> POC</button> */}
+          <Button text='Cancel' active={false} type='button' onClick={handleCancel} />
+          <Button text={props.textSubmit} active={true} type='submit' />
         </div>
       </div>
-    </form >
+    </form>
   );
 }
 

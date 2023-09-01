@@ -1,40 +1,44 @@
-import styles from './TodoLists.module.scss';
+import { useState } from 'react';
 import { FaTrashAlt, FaPen } from 'react-icons/fa';
 import { HiOutlineCheck } from 'react-icons/hi';
 
-import TodoForm from './TodoForm.jsx';
-import { useState } from 'react';
+import TodoForm from './TodoForm';
+import styles from './TodoItem.module.scss';
 
-function TodoItem({ task, done, date }) {
+// function TodoItem(props) {
+// Object Destructuring (Props)
+// const { task, done, date } = props;
+
+function TodoItem({ id, task, done, date }) {
     const [isOpenForm, setIsOpenForm] = useState(false);
-    // const {  } = props;
-    const handleClick = function () {
+    console.log(id);
 
+    const handleClick = function () {
         setIsOpenForm(!isOpenForm);
     };
     return (
-        <>{
-            isOpenForm ? (
-                <TodoForm textSubmit='Edit Task' setIsOpenForm={setIsOpenForm} />) :
-
-                (<li className={styles.todo} >
-
-                    <div className={`${styles.todo__checkbox} ${done ? styles.todo__checkbox__done : ''}`}>
-                        {/* <div className={styles.todo__checkbox}> */}
+        <>
+            {isOpenForm ? (
+                <TodoForm textSubmit='Edit Task' setIsOpenForm={setIsOpenForm} />
+            ) : (
+                <li className={styles.todo}>
+                    <div className={`${styles.todo__checkbox}  ${done ? styles.todo__checkbox__done : ''}`}>
                         <HiOutlineCheck className={styles.todo__checkbox__icon} />
                     </div>
-                    {/* <p className={styles.todo__task} >todo-item 1 </p> */}
-                    <p className={`${styles.todo__task} ${styles.todo__task__done}`}> {task} </p>
+                    <p className={`${styles.todo__task} ${done ? styles.todo__task__done : ''}`}>{task}</p>
                     <span className={styles.todo__date}>{date}</span>
                     <div className={styles.todo__action}>
-                        <span>
-                            <FaPen className={styles.todo__edit} onClick={handleClick} />
+                        <span onClick={handleClick}>
+                            <FaPen className={styles.todo__edit} />
                         </span>
                         <span>
                             <FaTrashAlt className={styles.todo__delete} />
                         </span>
                     </div>
-                </li >)}</>)
+                </li>
+            )}
+        </>
+    );
 }
 
 export default TodoItem;

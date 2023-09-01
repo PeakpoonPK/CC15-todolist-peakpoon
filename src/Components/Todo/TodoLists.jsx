@@ -1,26 +1,29 @@
+import TodoItem from './TodoItem';
 import styles from './TodoLists.module.scss';
-import { FaTrashAlt, FaPen } from 'react-icons/fa';
-import { HiOutlineCheck } from 'react-icons/hi';
-import TodoForm from './TodoForm.jsx';
-import { useState } from 'react';
-import TodoItem from './TodoItem'
 
+/*
+SCHEMA
+todoObj={id:number, task:string, status:boolean, due_date:string}
 
+data = Array[] {id:number, task:string, status:boolean, due_date:string}
+หรือ data = Array[] todoObj
 
-function TodoLists() {
-  const [isOpenForm, setIsOpenForm] = useState(false);
-  const handleClick = function (event) {
-    // console.log('clicked');
-    setIsOpenForm(!isOpenForm);
-  };
+dataRender = Array[] <TodoItem task=... done=... date=.... /> 
+*/
 
-
+function TodoLists(props) {
   return (
     <ul className={styles.todo__lists}>
-      <TodoItem task="DoHW" done={false} date="31 Aug" />
-      <TodoItem task="Dink" done={true} date="1 Sep" />
-
-    </ul >
+      {props.data.map((todoObj) => (
+        <TodoItem
+          key={todoObj.id}
+          id={todoObj.id}
+          task={todoObj.task}
+          done={todoObj.status}
+          date={todoObj.due_date}
+        />
+      ))}
+    </ul>
   );
 }
 
